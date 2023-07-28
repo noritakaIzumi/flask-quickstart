@@ -8,17 +8,36 @@ readme = "README.md"
 packages = [{include = "flask_quickstart"}]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8.1"  # for flake8 6.0.0
 poetry = "^1.5.1"
 flask = "^2.3.2"
 python-dotenv = "^1.0.0"
 gevent = "^23.7.0"
 
-
 [tool.poetry.group.dev.dependencies]
 pip-autoremove = "^0.10.0"
 watchdog = "^3.0.0"
+pysen = "0.10.5"
+black = "^23.7.0"
+flake8 = "^6.0.0"
+isort = "^5.12.0"
+mypy = "^1.4.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# pysen
+[tool.pysen]
+version = "0.10"
+
+[tool.pysen.lint]
+enable_black = true
+enable_flake8 = true
+enable_isort = true
+enable_mypy = true
+mypy_preset = "strict"
+line_length = 88
+py_version = "py37"
+[[tool.pysen.lint.mypy_targets]]
+paths = ["."]
