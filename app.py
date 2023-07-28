@@ -1,6 +1,6 @@
-from flask import Flask
+from _app.factories.create_app import create_app
 
-app = Flask(__name__)
+app = create_app(__name__)
 
 
 @app.route("/")
