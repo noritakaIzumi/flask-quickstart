@@ -5,7 +5,7 @@ description = "My first app by Flask."
 authors = ["Noritaka IZUMI <noritaka.izumi@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "flask_quickstart"}]
+packages = [{ include = "flask_quickstart" }]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"  # for flake8 6.0.0
