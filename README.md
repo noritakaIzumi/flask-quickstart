@@ -1,5 +1,7 @@
 # flask-quickstart
 
+https://flask.palletsprojects.com/en/2.3.x/quickstart/
+
 ## Preparing environment
 
 Create venv.
