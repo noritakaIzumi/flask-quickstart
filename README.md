@@ -32,7 +32,7 @@ Open http://127.0.0.1:5000 in your browser.
 
 ## Roadmap
 
-- [ ] A Minimal Application
+- [x] A Minimal Application
 - [ ] Debug Mode
 - [ ] HTML Escaping
 - [ ] Routing
