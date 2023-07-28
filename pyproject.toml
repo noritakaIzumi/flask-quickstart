@@ -10,6 +10,7 @@ packages = [{include = "flask_quickstart"}]
 [tool.poetry.dependencies]
 python = "^3.8.1"  # for flake8 6.0.0
 poetry = "^1.5.1"
+poethepoet = "^0.21.1"
 flask = "^2.3.2"
 python-dotenv = "^1.0.0"
 gevent = "^23.7.0"
@@ -26,6 +27,12 @@ mypy = "^1.4.1"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# scripts
+[tool.poe.tasks]
+start = "flask run"
+lint = "pysen run lint"
+format = "pysen run format"
 
 # pysen
 [tool.pysen]
