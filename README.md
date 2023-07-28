@@ -18,8 +18,8 @@ Upgrade pip and install dependencies.
 
 ```shell
 pip install --upgrade pip
-pip install pip-autoremove poetry
-poetry install --no-root
+pip install poetry
+poetry install --sync --no-root
 ```
 
 ## Preview server
