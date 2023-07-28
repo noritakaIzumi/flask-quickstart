@@ -25,10 +25,19 @@ poetry install --sync --no-root
 ## Preview server
 
 ```shell
-flask --app app run
+poe start
 ```
 
 Open http://127.0.0.1:5000 in your browser.
+
+## For developers
+
+After developing, execute lint/format.
+
+```shell
+poe run format
+poe run lint # if errors are present, fix them and retry
+```
 
 ## Roadmap
 
@@ -36,20 +45,20 @@ Open http://127.0.0.1:5000 in your browser.
 - [ ] Debug Mode
 - [ ] HTML Escaping
 - [ ] Routing
-  - [ ] Variable Rules
-  - [ ] Unique URLs / Redirection Behavior
-  - [ ] URL Building
-  - [ ] HTTP Methods
+    - [ ] Variable Rules
+    - [ ] Unique URLs / Redirection Behavior
+    - [ ] URL Building
+    - [ ] HTTP Methods
 - [ ] Static Files
 - [ ] Rendering Templates
 - [ ] Accessing Request Data
-  - [ ] Context Locals
-  - [ ] The Request Object
-  - [ ] File Uploads
-  - [ ] Cookies
+    - [ ] Context Locals
+    - [ ] The Request Object
+    - [ ] File Uploads
+    - [ ] Cookies
 - [ ] Redirects and Errors
 - [ ] About Responses
-  - [ ] APIs with JSON
+    - [ ] APIs with JSON
 - [ ] Sessions
 - [ ] Message Flashing
 - [ ] Logging
