@@ -30,8 +30,10 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 # scripts
+[tool.poe.tasks.start]
+cmd = "flask run"
+env = { PYTHONPATH = "_app" }
 [tool.poe.tasks]
-start = "flask run"
 lint = "pysen run lint"
 format = "pysen run format"
 test = "pytest"
