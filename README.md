@@ -46,10 +46,10 @@ poe run lint # if errors are present, fix them and retry
 ## Roadmap
 
 - [x] A Minimal Application
-- [ ] Debug Mode
-- [ ] HTML Escaping
+- [x] Debug Mode
+- [x] HTML Escaping
 - [ ] Routing
-    - [ ] Variable Rules
+    - [x] Variable Rules
     - [ ] Unique URLs / Redirection Behavior
     - [ ] URL Building
     - [ ] HTTP Methods
