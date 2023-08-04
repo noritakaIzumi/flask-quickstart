@@ -32,6 +32,8 @@ poe start
 
 Open http://127.0.0.1:5000 in your browser.
 
+`poe debug` start the app in debug mode.
+
 ## For developers
 
 After developing, execute lint/format.
