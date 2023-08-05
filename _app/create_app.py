@@ -1,6 +1,7 @@
 from typing import Optional
 
-from blueprints import hello, html_escaping, variable_rules
+from blueprints import hello, html_escaping
+from blueprints.routing import variable_rules
 from flask import Flask
 
 
