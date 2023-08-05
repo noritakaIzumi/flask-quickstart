@@ -50,7 +50,7 @@ poe run lint # if errors are present, fix them and retry
 - [x] HTML Escaping
 - [ ] Routing
     - [x] Variable Rules
-    - [ ] Unique URLs / Redirection Behavior
+    - [x] Unique URLs / Redirection Behavior
     - [ ] URL Building
     - [ ] HTTP Methods
 - [ ] Static Files

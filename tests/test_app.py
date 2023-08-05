@@ -36,3 +36,16 @@ class TestApp:
     def test_app__variable_rules__404(self, client: FlaskClient, path: str) -> None:
         response: TestResponse = client.get(path)
         assert response.status_code == 404
+
+    @pytest.mark.parametrize(
+        "path, status_code",
+        (
+            pytest.param("/projects/", 200, id="endpoint has trailing slash: redirect"),
+            pytest.param("/projects", 200, id="endpoint has trailing slash"),
+            pytest.param("/about", 200, id="endpoint has no trailing slash"),
+            pytest.param("/about/", 404, id="endpoint has no trailing slash: 404"),
+        ),
+    )
+    def test_app__unique_urls_redirection_behavior(self, client: FlaskClient, path: str, status_code: int) -> None:
+        response: TestResponse = client.get(path, follow_redirects=True)
+        assert response.status_code == status_code
