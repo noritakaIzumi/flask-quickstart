@@ -1,6 +1,12 @@
 from html import unescape
+from typing import Callable
 
 import pytest
+from app import app
+from blueprints import hello
+from blueprints.routing import variable_rules
+from blueprints.routing.unique_urls_redirection_behavior import about
+from flask import url_for
 from flask.testing import FlaskClient
 from markupsafe import escape
 from werkzeug.test import TestResponse
@@ -49,3 +55,16 @@ class TestApp:
     def test_app__unique_urls_redirection_behavior(self, client: FlaskClient, path: str, status_code: int) -> None:
         response: TestResponse = client.get(path, follow_redirects=True)
         assert response.status_code == status_code
+
+    def test_app__url_building(self, client: FlaskClient) -> None:
+        def get_endpoint_name(function: Callable) -> str:
+            # noinspection PyUnresolvedReferences
+            return str(function.__module__).split(".")[-1] + "." + function.__name__
+
+        with app.test_request_context():
+            assert url_for(get_endpoint_name(hello.hello_world)) == "/"
+            assert url_for(get_endpoint_name(about)) == "/about"
+            assert url_for(get_endpoint_name(about), next="/") == "/about?next=/"
+            assert (
+                url_for(get_endpoint_name(variable_rules.show_user_profile), username="John Doe") == "/user/John%20Doe"
+            )
