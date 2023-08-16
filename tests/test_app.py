@@ -68,3 +68,7 @@ class TestApp:
             assert (
                 url_for(get_endpoint_name(variable_rules.show_user_profile), username="John Doe") == "/user/John%20Doe"
             )
+
+    def test_app__http_methods(self, client: FlaskClient) -> None:
+        assert client.get("/login").text == "show_the_login_form"
+        assert client.post("/login").text == "do_the_login"

@@ -1,7 +1,7 @@
 from typing import Optional
 
 from blueprints import hello, html_escaping
-from blueprints.routing import unique_urls_redirection_behavior, variable_rules
+from blueprints.routing import login, unique_urls_redirection_behavior, variable_rules
 from flask import Flask
 
 
@@ -15,5 +15,6 @@ def create_app(app_name: Optional[str] = None) -> Flask:
     app.register_blueprint(html_escaping.bp)
     app.register_blueprint(variable_rules.bp)
     app.register_blueprint(unique_urls_redirection_behavior.bp)
+    app.register_blueprint(login.bp)
 
     return app

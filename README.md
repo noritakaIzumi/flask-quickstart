@@ -52,7 +52,7 @@ poe run lint # if errors are present, fix them and retry
     - [x] Variable Rules
     - [x] Unique URLs / Redirection Behavior
     - [x] URL Building
-    - [ ] HTTP Methods
+    - [x] HTTP Methods
 - [ ] Static Files
 - [ ] Rendering Templates
 - [ ] Accessing Request Data
