@@ -48,7 +48,7 @@ poe run lint # if errors are present, fix them and retry
 - [x] A Minimal Application
 - [x] Debug Mode
 - [x] HTML Escaping
-- [ ] Routing
+- [x] Routing
     - [x] Variable Rules
     - [x] Unique URLs / Redirection Behavior
     - [x] URL Building
