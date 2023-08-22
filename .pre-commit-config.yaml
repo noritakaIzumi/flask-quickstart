@@ -10,11 +10,6 @@ repos:
       - id: check-added-large-files
   - repo: local
     hooks:
-      - id: poe-format
-        name: Format
-        entry: poe format
-        pass_filenames: false
-        language: python
       - id: poe-lint
         name: Lint
         entry: poe lint
