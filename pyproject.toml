@@ -25,6 +25,7 @@ isort = "^5.12.0"
 mypy = "^1.4.1"
 pytest = "^7.4.0"
 djlint = "^1.32.1"
+bandit = "^1.7.5"
 
 [build-system]
 requires = ["poetry-core"]
@@ -33,11 +34,14 @@ build-backend = "poetry.core.masonry.api"
 # scripts
 [tool.poe.env]
 PYTHONPATH = "app"
+_FORM_PASSWORD = "password" # サンプルプログラムで使用
 [tool.poe.tasks]
 start = "flask --app main run"
 debug = "poe start --debug"
 lint = ["lint-py", "lint-html"]
-lint-py = "pysen run lint"
+lint-py = ["lint-py-style", "lint-py-bandit"]
+lint-py-style = "pysen run lint"
+lint-py-bandit = "bandit -c pyproject.toml -r ."
 lint-html = "djlint ./templates"
 format = ["format-py", "format-html"]
 format-py = "pysen run format"
@@ -71,3 +75,6 @@ indent_size = 4
 
 [tool.djlint.js]
 indent_size = 4
+
+[tool.bandit]
+exclude_dirs = [".mypy_cache", ".venv", "tests"]

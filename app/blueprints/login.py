@@ -1,3 +1,4 @@
+import os
 from typing import Dict, Optional
 
 from flask import Blueprint, render_template, request
@@ -18,7 +19,8 @@ def login() -> str:
     form: Optional[Form] = None
     if request.method == "POST":
         form = Form(request.form)
-        if form.username == "nori" and form.password == "password":
+        expected_password = os.environ.get("_FORM_PASSWORD")
+        if form.username == "nori" and form.password == expected_password:
             return f"Hello, {form.username}!"
         error = "Invalid username/password"
 
