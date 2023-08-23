@@ -1,9 +1,9 @@
 <h1>Login form</h1>
 <form action="{{ action }}" method="post">
     {% if error %}<p><span style="color: red;">{{ error }}</span></p>{% endif %}
-    <label>Username: <input type="text" name="username"></label>
+    <label>Username: <input type="text" name="username" value="{{ form.username|default }}"></label>
     <br>
-    <label>Password: <input type="text" name="password"></label>
+    <label>Password: <input type="text" name="password" value="{{ form.password|default }}"></label>
     <br>
     <input type="submit">
 </form>
