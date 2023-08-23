@@ -53,11 +53,11 @@ poe run lint # if errors are present, fix them and retry
     - [x] Unique URLs / Redirection Behavior
     - [x] URL Building
     - [x] HTTP Methods
-- [ ] Static Files
-- [ ] Rendering Templates
-- [ ] Accessing Request Data
-    - [ ] Context Locals
-    - [ ] The Request Object
+- [x] Static Files
+- [x] Rendering Templates
+- [x] Accessing Request Data
+    - [x] Context Locals
+    - [x] The Request Object
     - [ ] File Uploads
     - [ ] Cookies
 - [ ] Redirects and Errors
