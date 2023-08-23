@@ -1,5 +1,5 @@
 <h1>Login form</h1>
-<form action="/login" method="post">
+<form action="{{ action }}" method="post">
     {% if error %}<p><span style="color: red;">{{ error }}</span></p>{% endif %}
     <label>Username: <input type="text" name="username"></label>
     <br>

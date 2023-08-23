@@ -14,4 +14,4 @@ def login() -> str:
             return f'Hello, {form.get("username")}!'
         error = "Invalid username/password"
 
-    return render_template("login.html", error=error)
+    return render_template("login.html", action=request.path, error=error)
