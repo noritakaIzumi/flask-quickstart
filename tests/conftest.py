@@ -9,6 +9,7 @@ from flask.testing import FlaskClient, FlaskCliRunner
 @pytest.fixture()
 def app() -> Generator[Flask, None, None]:
     app = create_app()
+    app.template_folder = "../templates"
     app.config.update(
         {
             "TESTING": True,
