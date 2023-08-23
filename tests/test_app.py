@@ -6,7 +6,7 @@ from app import app
 from blueprints import hello
 from blueprints.routing import variable_rules
 from blueprints.routing.unique_urls_redirection_behavior import about
-from flask import url_for
+from flask import request, url_for
 from flask.testing import FlaskClient
 from markupsafe import escape, soft_str
 from werkzeug.test import TestResponse
@@ -90,3 +90,8 @@ class TestApp:
         )
         assert soft_str(escape("<blink>hacker</blink>")) == "&lt;blink&gt;hacker&lt;/blink&gt;"
         assert Markup("<em>Marked up</em> &raquo; HTML").striptags() == "Marked up » HTML"
+
+    def test_app__accessing_request_data__context_locals(self) -> None:
+        with app.test_request_context("/hello", method="POST"):
+            assert request.path == "/hello"
+            assert request.method == "POST"
