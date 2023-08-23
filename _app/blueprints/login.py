@@ -1,13 +1,17 @@
-from flask import Blueprint
+from typing import Dict, Optional
+
+from flask import Blueprint, render_template, request
 
 bp = Blueprint(__name__.replace(f"{__package__}.", ""), __name__)
 
 
-@bp.get("/login")
-def login_get() -> str:
-    return "show_the_login_form"
+@bp.route("/login", methods=["GET", "POST"])
+def login() -> str:
+    error: Optional[str] = None
+    if request.method == "POST":
+        form: Dict[str, str] = request.form
+        if form.get("username") == "nori" and form.get("password") == "password":
+            return f'Hello, {form.get("username")}!'
+        error = "Invalid username/password"
 
-
-@bp.post("/login")
-def login_post() -> str:
-    return "do_the_login"
+    return render_template("login.html", error=error)
