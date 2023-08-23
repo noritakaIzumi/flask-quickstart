@@ -1,7 +1,7 @@
 from os.path import abspath, dirname
 from typing import Optional
 
-from blueprints import hello, html_escaping, login, rendering_templates
+from blueprints import hello, html_escaping, login, rendering_templates, search
 from blueprints.routing import unique_urls_redirection_behavior, variable_rules
 from flask import Flask
 
@@ -20,5 +20,6 @@ def create_app(app_name: Optional[str] = None) -> Flask:
     app.register_blueprint(unique_urls_redirection_behavior.bp)
     app.register_blueprint(login.bp)
     app.register_blueprint(rendering_templates.bp)
+    app.register_blueprint(search.bp)
 
     return app
