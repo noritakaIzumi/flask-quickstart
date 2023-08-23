@@ -1,7 +1,7 @@
 from typing import Generator
 
 import pytest
-from _app.create_app import create_app
+from app.create_app import create_app
 from flask import Flask
 from flask.testing import FlaskClient, FlaskCliRunner
 

@@ -32,9 +32,9 @@ build-backend = "poetry.core.masonry.api"
 
 # scripts
 [tool.poe.env]
-PYTHONPATH = "_app"
+PYTHONPATH = "app"
 [tool.poe.tasks]
-start = "flask run"
+start = "flask --app main run"
 debug = "poe start --debug"
 lint = ["lint-py", "lint-html"]
 lint-py = "pysen run lint"

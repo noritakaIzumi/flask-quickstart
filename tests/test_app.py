@@ -2,12 +2,12 @@ from html import unescape
 from typing import Callable
 
 import pytest
-from app import app
 from blueprints import hello
 from blueprints.routing import variable_rules
 from blueprints.routing.unique_urls_redirection_behavior import about
 from flask import request, url_for
 from flask.testing import FlaskClient
+from main import app
 from markupsafe import escape, soft_str
 from werkzeug.test import TestResponse
 
