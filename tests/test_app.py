@@ -76,3 +76,7 @@ class TestApp:
     def test_app__static_files(self) -> None:
         with app.test_request_context():
             assert url_for("static", filename="style.css") == "/static/style.css"
+
+    def test_app__rendering_templates(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/hello/")
+        assert "Hello, World!" in response.text
