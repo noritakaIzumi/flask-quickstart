@@ -1,8 +1,8 @@
 from os.path import abspath, dirname
 from typing import Optional
 
-from blueprints import hello, html_escaping, rendering_templates
-from blueprints.routing import login, unique_urls_redirection_behavior, variable_rules
+from blueprints import hello, html_escaping, login, rendering_templates
+from blueprints.routing import unique_urls_redirection_behavior, variable_rules
 from flask import Flask
 
 repo_root = dirname(dirname(abspath(__file__)))
