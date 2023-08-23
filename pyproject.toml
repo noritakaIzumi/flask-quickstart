@@ -24,6 +24,7 @@ flake8 = "^6.0.0"
 isort = "^5.12.0"
 mypy = "^1.4.1"
 pytest = "^7.4.0"
+djlint = "^1.32.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -35,8 +36,12 @@ PYTHONPATH = "_app"
 [tool.poe.tasks]
 start = "flask run"
 debug = "poe start --debug"
-lint = "pysen run lint"
-format = "pysen run format"
+lint = ["lint-py", "lint-html"]
+lint-py = "pysen run lint"
+lint-html = "djlint ./templates"
+format = ["format-py", "format-html"]
+format-py = "pysen run format"
+format-html = "poe lint-html --reformat"
 test = "pytest"
 
 # pysen
@@ -55,3 +60,6 @@ py_version = "py38"
 paths = ["."]
 [tool.pysen.lint.source]
 includes = ["."]
+
+[tool.djlint]
+profile = "jinja"

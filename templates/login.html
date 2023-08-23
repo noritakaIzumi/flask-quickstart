@@ -1,9 +1,23 @@
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
 <h1>Login form</h1>
 <form action="{{ action }}" method="post">
-    {% if error %}<p><span style="color: red;">{{ error }}</span></p>{% endif %}
-    <label>Username: <input type="text" name="username" value="{{ form.username|default }}"></label>
+    {% if error %}
+        <p>
+            <span class="login--error-msg">{{ error }}</span>
+        </p>
+    {% endif %}
+    <label>
+        Username:
+        <input type="text" name="username" value="{{ form.username|default }}">
+    </label>
     <br>
-    <label>Password: <input type="text" name="password" value="{{ form.password|default }}"></label>
+    <label>
+        Password:
+        <input type="text" name="password" value="{{ form.password|default }}">
+    </label>
     <br>
     <input type="submit">
 </form>
