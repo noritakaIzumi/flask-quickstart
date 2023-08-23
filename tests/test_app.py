@@ -8,7 +8,7 @@ from blueprints.routing import variable_rules
 from blueprints.routing.unique_urls_redirection_behavior import about
 from flask import url_for
 from flask.testing import FlaskClient
-from markupsafe import escape
+from markupsafe import escape, soft_str
 from werkzeug.test import TestResponse
 
 
@@ -80,3 +80,13 @@ class TestApp:
     def test_app__rendering_templates(self, client: FlaskClient) -> None:
         response: TestResponse = client.get("/hello/")
         assert "Hello, World!" in response.text
+
+    def test_app__rendering_templates_markup(self) -> None:
+        from markupsafe import Markup
+
+        assert (
+            soft_str(Markup("<strong>Hello %s!</strong>") % "<blink>hacker</blink>")
+            == "<strong>Hello &lt;blink&gt;hacker&lt;/blink&gt;!</strong>"
+        )
+        assert soft_str(escape("<blink>hacker</blink>")) == "&lt;blink&gt;hacker&lt;/blink&gt;"
+        assert Markup("<em>Marked up</em> &raquo; HTML").striptags() == "Marked up » HTML"
