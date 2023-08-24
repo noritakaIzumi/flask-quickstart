@@ -43,4 +43,7 @@ jobs:
           pip install poetry
           poetry install --sync --no-root
       - name: Save python venv
-        uses: ${{ jobs.load-python-venv.steps.load-venv-cache }}
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
