@@ -22,10 +22,9 @@ jobs:
   create-python-venv:
     needs:
       - load-python-venv
-    if: ${{ needs.load-python-venv.outputs.cache-hit }} != true
+    if: needs.load-python-venv.outputs.cache-hit != 'true'
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ needs.load-python-venv.outputs.cache-hit }}; exit 1
       - uses: actions/checkout@v3
       - name: Get poetry version
         id: get-poetry-version
