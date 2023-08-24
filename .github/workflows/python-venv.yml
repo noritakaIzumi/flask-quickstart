@@ -4,7 +4,7 @@ on:
 env:
   PYTHON_VERSION: 3.11
 jobs:
-  build:
+  load-python-venv:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,13 +13,28 @@ jobs:
         with:
           path: .venv
           key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-      - if: steps.load-venv-cache.outputs.cache-hit != 'true'
-        uses: actions/setup-python@v4
+    outputs:
+      cache-hit: ${{ steps.load-venv-cache.outputs.cache-hit }}
+  create-python-venv:
+    needs:
+      - load-python-venv
+    if: ${{ needs.load-python-venv.outputs.cache-hit }} != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get poetry version
+        id: get-poetry-version
+        run: |
+          POETRY_VERSION=$(grep 'name = "poetry"' -A1 poetry.lock | tail -1 | grep -oE '([0-9]+\.)+[0-9]')
+          echo "value=$POETRY_VERSION" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v3
+        id: load-poetry-cache
+        with:
+          path: ~/.cache/pypoetry
+          key: poetry-${{ steps.get-poetry-version.outputs.value }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      - uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-          cache: 'poetry'
-      - if: steps.load-venv-cache.outputs.cache-hit != 'true'
-        run: |
+      - run: |
           python -m venv .venv
           . ./.venv/bin/activate
           pip install --upgrade pip
