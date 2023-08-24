@@ -7,7 +7,12 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "prettier": "prettier --check '**/*.ts'",
+    "prettier:fix": "prettier --write '**/*.ts'",
+    "eslint": "eslint '**/*.ts'",
+    "eslint:fix": "eslint --fix '**/*.ts'",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -21,10 +26,74 @@
   },
   "homepage": "https://github.com/noritakaIzumi/flask-quickstart#readme",
   "devDependencies": {
-    "@playwright/test": "^1.37.1"
+    "@playwright/test": "^1.37.1",
+    "@typescript-eslint/eslint-plugin": "6.4.1",
+    "@typescript-eslint/parser": "6.4.1",
+    "eslint": "8.47.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-playwright": "^0.15.3",
+    "eslint-plugin-prettier": "5.0.0",
+    "husky": "8.0.3",
+    "lint-staged": "14.0.1",
+    "prettier": "3.0.2"
   },
   "volta": {
     "node": "18.17.1",
     "npm": "9.8.1"
+  },
+  "prettier": {
+    "parser": "typescript",
+    "printWidth": 120,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "overrides": [
+      {
+        "files": [
+          "e2e/**/*.ts"
+        ],
+        "excludedFiles": [
+          "e2e/example/demo-todo-app.spec.ts"
+        ],
+        "extends": [
+          "plugin:playwright/recommended"
+        ]
+      },
+      {
+        "files": [
+          "src/**/*.ts"
+        ],
+        "extends": [
+          "eslint:recommended",
+          "plugin:@typescript-eslint/recommended",
+          "airbnb",
+          "plugin:prettier/recommended",
+          "prettier"
+        ],
+        "plugins": [
+          "@typescript-eslint",
+          "prettier"
+        ],
+        "rules": {
+          "prettier/prettier": "error",
+          "@typescript-eslint/indent": [
+            "error",
+            2
+          ],
+          "@typescript-eslint/no-unused-vars": "error",
+          "@typescript-eslint/no-explicit-any": "error"
+        }
+      }
+    ]
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
