@@ -10,7 +10,7 @@ jobs:
   build:
     uses: ./.github/workflows/python-venv.yml
   test:
-    timeout-minutes: 60
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     needs:
       - build

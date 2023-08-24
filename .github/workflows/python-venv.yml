@@ -9,6 +9,7 @@ env:
   PYTHON_VERSION: 3.11
 jobs:
   load-python-venv:
+    timeout-minutes: 2
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,6 +25,7 @@ jobs:
       cache-key: ${{ steps.calculate-venv-cache-key.outputs.value }}
       cache-hit: ${{ steps.load-venv-cache.outputs.cache-hit }}
   create-python-venv:
+    timeout-minutes: 10
     needs:
       - load-python-venv
     if: ${{ needs.load-python-venv.outputs.cache-hit != 'true' }}
