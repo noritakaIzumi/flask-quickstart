@@ -3,7 +3,6 @@ on:
   workflow_call:
 env:
   PYTHON_VERSION: 3.11
-  PYTHON_VENV_CACHE_KEY: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
 jobs:
   load-python-venv:
     runs-on: ubuntu-latest
@@ -13,7 +12,7 @@ jobs:
         id: load-venv-cache
         with:
           path: .venv
-          key: ${{ env.PYTHON_VENV_CACHE_KEY }}
+          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
     outputs:
       cache-hit: ${{ steps.load-venv-cache.outputs.cache-hit }}
   create-python-venv:
@@ -47,4 +46,4 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: ${{ env.PYTHON_VENV_CACHE_KEY }}
+          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
