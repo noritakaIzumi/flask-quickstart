@@ -1,6 +1,10 @@
 name: Python venv
 on:
   workflow_call:
+    outputs:
+      cache-key:
+        description: "Cache key of python venv"
+        value: ${{ jobs.load-python-venv.outputs.cache-key }}
 env:
   PYTHON_VERSION: 3.11
 jobs:

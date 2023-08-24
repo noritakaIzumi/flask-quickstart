@@ -15,10 +15,12 @@ jobs:
     needs:
       - build
     steps:
-      - run: |
-          ls -la .
-          test -d .venv
       - uses: actions/checkout@v3
+      - name: Load python venv
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: ${{ needs.build.outputs.cache-key }}
       - uses: actions/setup-node@v3
         with:
           node-version: 18
