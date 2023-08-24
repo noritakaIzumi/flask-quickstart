@@ -24,9 +24,7 @@ jobs:
       - name: Activate python venv
         run: |
           . ./.venv/bin/activate
-          ls -la ./.venv/bin
-          echo $PATH
-          exit 1
+          echo "PATH=$PATH" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v3
         with:
           node-version: 18
