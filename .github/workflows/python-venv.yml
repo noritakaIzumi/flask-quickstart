@@ -1,0 +1,27 @@
+name: Python venv
+on:
+  workflow_call:
+env:
+  PYTHON_VERSION: 3.11
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        id: load-venv-cache
+        with:
+          path: .venv
+          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+      - if: steps.load-venv-cache.outputs.cache-hit != 'true'
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'poetry'
+      - if: steps.load-venv-cache.outputs.cache-hit != 'true'
+        run: |
+          python -m venv .venv
+          . ./.venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install --sync --no-root
