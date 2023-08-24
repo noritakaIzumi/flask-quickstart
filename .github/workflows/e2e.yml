@@ -44,24 +44,9 @@ jobs:
       - name: Export Playwright browsers path
         run: echo "PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers" >> "$GITHUB_ENV"
       # setup playwright browsers
-      - id: playwright-config-hash
-        run: echo "value=${{ hashFiles('**/playwright.config.ts') }}" >> "$GITHUB_OUTPUT"
-      - name: Load Playwright browsers cache
-        id: load-playwright-browsers-cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright_browsers_cache-${{ runner.os }}-${{ steps.playwright-config-hash.outputs.value }}
-      - name: Load Playwright browsers
-        id: load-playwright-browsers
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
-          key: playwright_browsers-${{ runner.os }}-${{ steps.playwright-config-hash.outputs.value }}
+      # caching browser binaries is not recommended: https://playwright.dev/docs/ci#caching-browsers
       - name: Install Playwright Browsers
-        if: ${{ steps.load-playwright-browsers-cache.outputs.cache-hit != 'true' || steps.load-playwright-browsers.outputs.cache-hit != 'true' }}
         run: npx playwright install --with-deps
-      - run: ls -la ~/.cache; exit 1
       # run tests
       - name: Run E2E tests
         run: npm run test:e2e
