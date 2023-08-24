@@ -8,12 +8,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Calculate venv cache key
+        id: calculate-venv-cache-key
+        run: echo "value=venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}" >> "$GITHUB_OUTPUT"
       - uses: actions/cache@v3
         id: load-venv-cache
         with:
           path: .venv
-          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: ${{ steps.calculate-venv-cache-key.outputs.value }}
     outputs:
+      cache-key: ${{ steps.calculate-venv-cache-key.outputs.value }}
       cache-hit: ${{ steps.load-venv-cache.outputs.cache-hit }}
   create-python-venv:
     needs:
@@ -46,4 +50,4 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: venv-${{ env.PYTHON_VERSION }}-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          key: ${{ needs.load-python-venv.outputs.cache-key }}
