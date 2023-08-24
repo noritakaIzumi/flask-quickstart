@@ -94,6 +94,10 @@
       "prettier --write",
       "eslint --fix",
       "git add"
+    ],
+    "**/*.py": [
+      "poe format-one",
+      "poe lint-one"
     ]
   }
 }
