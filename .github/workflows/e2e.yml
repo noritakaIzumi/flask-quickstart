@@ -69,7 +69,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: .venv
-          key: ${{ needs.build.outputs.cache-key }}
+          key: ${{ needs.build-python.outputs.cache-key }}
       - name: Activate python venv
         run: |
           . ./.venv/bin/activate
