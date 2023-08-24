@@ -43,4 +43,4 @@ jobs:
           pip install poetry
           poetry install --sync --no-root
       - name: Save python venv
-        uses: jobs.load-python-venv.steps.load-venv-cache
+        uses: ${{ jobs.load-python-venv.steps.load-venv-cache }}
