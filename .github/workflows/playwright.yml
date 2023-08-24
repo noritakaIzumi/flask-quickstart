@@ -22,7 +22,11 @@ jobs:
           path: .venv
           key: ${{ needs.build.outputs.cache-key }}
       - name: Activate python venv
-        run: . ./.venv/bin/activate
+        run: |
+          . ./.venv/bin/activate
+          ls -la ./.venv/bin
+          echo $PATH
+          exit 1
       - uses: actions/setup-node@v3
         with:
           node-version: 18
