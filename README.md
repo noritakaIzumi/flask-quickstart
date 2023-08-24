@@ -94,7 +94,7 @@ npm run test
 ### Tutorial
 
 - [x] Project Layout
-- [ ] Application Setup
+- [x] Application Setup
 - [ ] Define and Access the Database
 - [ ] Blueprints and Views
 - [ ] Templates
