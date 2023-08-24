@@ -11,7 +11,7 @@
     "test:e2e": "npx playwright test",
     "prettier": "prettier --check '**/*.ts'",
     "prettier:fix": "prettier --write '**/*.ts'",
-    "eslint": "eslint '**/*.ts'",
+    "eslint": "eslint --max-warnings 0 '**/*.ts'",
     "eslint:fix": "eslint --fix '**/*.ts'",
     "prepare": "husky install"
   },
