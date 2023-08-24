@@ -61,6 +61,7 @@ jobs:
       - name: Install Playwright Browsers
         if: ${{ steps.load-playwright-browsers-cache.outputs.cache-hit != 'true' || steps.load-playwright-browsers.outputs.cache-hit != 'true' }}
         run: npx playwright install --with-deps
+      - run: ls -la ~/.cache; exit 1
       # run tests
       - name: Run E2E tests
         run: npm run test:e2e
