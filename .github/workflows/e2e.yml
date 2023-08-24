@@ -51,7 +51,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
-          key: ${{ needs.build-node-modules.outputs.value }}
+          key: ${{ needs.build-node-modules.outputs.cache-key }}
       - name: Run lint
         run: |
           npm run prettier
@@ -85,7 +85,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: '**/node_modules'
-          key: ${{ needs.build-node-modules.outputs.value }}
+          key: ${{ needs.build-node-modules.outputs.cache-key }}
       # setup playwright browsers
       # caching browser binaries is not recommended: https://playwright.dev/docs/ci#caching-browsers
       - name: Install Playwright Browsers
