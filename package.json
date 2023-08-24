@@ -93,12 +93,11 @@
   "lint-staged": {
     "**/*.ts": [
       "prettier --write",
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ],
     "**/*.py": [
-      "poe format-one",
-      "poe lint-one"
+      "poe format-py-one",
+      "poe lint-py-one"
     ]
   }
 }

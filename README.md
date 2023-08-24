@@ -64,6 +64,8 @@ npm run test
 
 ## Roadmap
 
+### Quickstart
+
 - [x] A Minimal Application
 - [x] Debug Mode
 - [x] HTML Escaping
@@ -88,6 +90,19 @@ npm run test
 - [ ] Hooking in WSGI Middleware
 - [ ] Using Flask Extensions
 - [ ] Deploying to a Web Server
+
+### Tutorial
+
+- [x] Project Layout
+- [ ] Application Setup
+- [ ] Define and Access the Database
+- [ ] Blueprints and Views
+- [ ] Templates
+- [ ] Static Files
+- [ ] Blog Blueprint
+- [ ] Make the Project Installable
+- [ ] Test Coverage
+- [ ] Deploy to Production
 
 ### Other
 

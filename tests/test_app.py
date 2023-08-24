@@ -2,14 +2,16 @@ from html import unescape
 from typing import Callable
 
 import pytest
+from app import create_app
 from blueprints import hello
 from blueprints.routing import variable_rules
 from blueprints.routing.unique_urls_redirection_behavior import about
 from flask import request, url_for
 from flask.testing import FlaskClient
-from main import app
 from markupsafe import escape, soft_str
 from werkzeug.test import TestResponse
+
+_app = create_app()
 
 
 class TestApp:
@@ -61,7 +63,7 @@ class TestApp:
             # noinspection PyUnresolvedReferences
             return str(function.__module__).split(".")[-1] + "." + function.__name__
 
-        with app.test_request_context():
+        with _app.test_request_context():
             assert url_for(get_endpoint_name(hello.hello_world)) == "/"
             assert url_for(get_endpoint_name(about)) == "/about"
             assert url_for(get_endpoint_name(about), next="/") == "/about?next=/"
@@ -70,7 +72,7 @@ class TestApp:
             )
 
     def test_app__static_files(self) -> None:
-        with app.test_request_context():
+        with _app.test_request_context():
             assert url_for("static", filename="style.css") == "/static/style.css"
 
     def test_app__rendering_templates(self, client: FlaskClient) -> None:
@@ -88,6 +90,6 @@ class TestApp:
         assert Markup("<em>Marked up</em> &raquo; HTML").striptags() == "Marked up » HTML"
 
     def test_app__accessing_request_data__context_locals(self) -> None:
-        with app.test_request_context("/hello", method="POST"):
+        with _app.test_request_context("/hello", method="POST"):
             assert request.path == "/hello"
             assert request.method == "POST"
