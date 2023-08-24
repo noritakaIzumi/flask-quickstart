@@ -7,12 +7,13 @@ on:
     branches:
       - main
 jobs:
+  build:
+    uses: ./.github/workflows/python-venv.yml
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - name: Load Python venv
-        uses: ./.github/workflows/python-venv.yml
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
