@@ -26,7 +26,7 @@ jobs:
   create-python-venv:
     needs:
       - load-python-venv
-    if: needs.load-python-venv.outputs.cache-hit != 'true'
+    if: ${{ needs.load-python-venv.outputs.cache-hit != 'true' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

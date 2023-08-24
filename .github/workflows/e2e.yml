@@ -1,4 +1,4 @@
-name: Playwright Tests
+name: E2E Tests
 on:
   push:
     branches:
@@ -26,26 +26,26 @@ jobs:
           . ./.venv/bin/activate
           echo "PATH=$PATH" >> "$GITHUB_ENV"
       - uses: actions/setup-node@v3
+        id: setup-node
         with:
           node-version: 18
-      - name: Load node modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: node_modules-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          cache: npm
       - name: Install dependencies
+        if: ${{ steps.setup-node.outputs.cache-hit != 'true' }}
         run: npm ci
       - name: Export Playwright browsers path
         run: echo "PLAYWRIGHT_BROWSERS_PATH=$HOME/pw-browsers" >> "$GITHUB_ENV"
       - name: Load Playwright browsers
+        id: load-playwright-browsers
         uses: actions/cache@v3
         with:
           path: ${{ env.PLAYWRIGHT_BROWSERS_PATH }}
           key: playwright_browsers-${{ runner.os }}-${{ hashFiles('e2e/**/*.spec.ts') }}
       - name: Install Playwright Browsers
+        if: ${{ steps.load-playwright-browsers.outputs.cache-hit != 'true' }}
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test
+      - name: Run E2E tests
+        run: npm run test:e2e
       - uses: actions/upload-artifact@v3
         if: always()
         with:
