@@ -21,7 +21,9 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
         instance_relative_config=True,
     )
 
-    app.config.from_mapping(SECRET_KEY="dev", DATABASE=os.path.join(app.instance_path, "app.sqlite"))
+    app.config.from_mapping(
+        SECRET_KEY=os.environ.get("_SECRET_KEY"), DATABASE=os.path.join(app.instance_path, "app.sqlite")
+    )
     if test_config is None:
         app.config.from_pyfile("config.py", silent=True)
     else:

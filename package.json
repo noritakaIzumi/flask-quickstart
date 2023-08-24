@@ -97,7 +97,8 @@
     ],
     "**/*.py": [
       "poe format-py-one",
-      "poe lint-py-one"
+      "poe lint-py-one",
+      "poe lint-py-bandit-one"
     ]
   }
 }

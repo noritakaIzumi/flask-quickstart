@@ -35,6 +35,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poe.env]
 PYTHONPATH = "app"
 _FORM_PASSWORD = "password" # サンプルプログラムで使用
+_SECRET_KEY = "dev" # サンプルプログラムで使用
 [tool.poe.tasks]
 start = "flask run"
 debug = "poe start --debug"
@@ -43,6 +44,7 @@ lint-py = ["lint-py-style", "lint-py-bandit"]
 lint-py-style = "pysen run lint"
 lint-py-one = "pysen run_files lint"
 lint-py-bandit = "bandit -c pyproject.toml -r ."
+lint-py-bandit-one = "bandit -c pyproject.toml"
 lint-html = "djlint ./app/templates"
 format = ["format-py", "format-html"]
 format-py = "pysen run format"
