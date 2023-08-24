@@ -11,7 +11,6 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - name: Load Python venv
         uses: ./.github/workflows/python-venv.yml
       - uses: actions/setup-node@v3
