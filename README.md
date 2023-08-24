@@ -55,7 +55,7 @@ poe run lint # if errors are present, fix them and retry
     - [x] HTTP Methods
 - [x] Static Files
 - [x] Rendering Templates
-- [x] Accessing Request Data
+- [ ] Accessing Request Data
     - [x] Context Locals
     - [x] The Request Object
     - [ ] File Uploads
@@ -69,3 +69,11 @@ poe run lint # if errors are present, fix them and retry
 - [ ] Hooking in WSGI Middleware
 - [ ] Using Flask Extensions
 - [ ] Deploying to a Web Server
+
+### Other
+
+- [x] pytest
+- [x] e2e test via Playwright
+- [x] pre-commit
+- [x] linter/fomatter
+- [x] security check: *.py
