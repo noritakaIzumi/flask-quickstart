@@ -4,7 +4,7 @@ https://flask.palletsprojects.com/en/2.3.x/quickstart/
 
 ## Preparing environment
 
-Create venv.
+Create Python venv.
 
 ```shell
 python -m venv .venv
@@ -36,11 +36,30 @@ Open http://127.0.0.1:5000 in your browser.
 
 ## For developers
 
-After developing, execute lint/format.
+Install volta (if not exists)
 
 ```shell
-poe run format
-poe run lint # if errors are present, fix them and retry
+curl https://get.volta.sh | bash
+```
+
+Install npm packages
+
+```shell
+npm ci
+```
+
+### Testing python script
+
+```shell
+poe test
+```
+
+### E2E tests
+
+Execute tests
+
+```shell
+npm run test
 ```
 
 ## Roadmap
