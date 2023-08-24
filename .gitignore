@@ -7,3 +7,11 @@
 # Python cache
 **/__pycache__
 **/.pytest_cache
+
+# npm packages
+/node_modules
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/

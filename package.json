@@ -1,0 +1,26 @@
+{
+  "name": "flask-quickstart",
+  "version": "1.0.0",
+  "description": "https://flask.palletsprojects.com/en/2.3.x/quickstart/",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noritakaIzumi/flask-quickstart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noritakaIzumi/flask-quickstart/issues"
+  },
+  "homepage": "https://github.com/noritakaIzumi/flask-quickstart#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.37.1"
+  }
+}
