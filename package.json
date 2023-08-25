@@ -9,6 +9,7 @@
   "scripts": {
     "test": "exit 1",
     "test:e2e": "npx playwright test",
+    "lint": "mega-linter-runner --path .",
     "prettier": "prettier --check '**/*.ts'",
     "prettier:fix": "prettier --write '**/*.ts'",
     "eslint": "eslint --max-warnings 0 '**/*.ts'",
@@ -40,6 +41,7 @@
     "markdown-link-check": "^3.11.2",
     "markdown-table-formatter": "^1.4.0",
     "markdownlint-cli": "^0.35.0",
+    "mega-linter-runner": "^7.3.0",
     "prettier": "3.0.2"
   },
   "volta": {
