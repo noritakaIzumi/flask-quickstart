@@ -1,6 +1,6 @@
 # flask-quickstart
 
-https://flask.palletsprojects.com/en/2.3.x/quickstart/
+<https://flask.palletsprojects.com/en/2.3.x/quickstart/>
 
 ## Preparing environment
 
@@ -30,7 +30,7 @@ poetry install --sync --no-root
 poe start
 ```
 
-Open http://127.0.0.1:5000 in your browser.
+Open <http://127.0.0.1:5000> in your browser.
 
 `poe debug` start the app in debug mode.
 
@@ -70,20 +70,20 @@ npm run test
 - [x] Debug Mode
 - [x] HTML Escaping
 - [x] Routing
-    - [x] Variable Rules
-    - [x] Unique URLs / Redirection Behavior
-    - [x] URL Building
-    - [x] HTTP Methods
+  - [x] Variable Rules
+  - [x] Unique URLs / Redirection Behavior
+  - [x] URL Building
+  - [x] HTTP Methods
 - [x] Static Files
 - [x] Rendering Templates
 - [ ] Accessing Request Data
-    - [x] Context Locals
-    - [x] The Request Object
-    - [ ] File Uploads
-    - [ ] Cookies
+  - [x] Context Locals
+  - [x] The Request Object
+  - [ ] File Uploads
+  - [ ] Cookies
 - [ ] Redirects and Errors
 - [ ] About Responses
-    - [ ] APIs with JSON
+  - [ ] APIs with JSON
 - [ ] Sessions
 - [ ] Message Flashing
 - [ ] Logging
