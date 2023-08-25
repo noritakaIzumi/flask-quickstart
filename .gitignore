@@ -18,3 +18,5 @@
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+megalinter-reports/
