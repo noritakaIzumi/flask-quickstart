@@ -42,13 +42,10 @@ debug = "poe start --debug"
 lint = ["lint-py", "lint-html"]
 lint-py = ["lint-py-style", "lint-py-bandit"]
 lint-py-style = "pysen run lint"
-lint-py-one = "pysen run_files lint"
 lint-py-bandit = "bandit -c pyproject.toml -r ."
-lint-py-bandit-one = "bandit -c pyproject.toml"
 lint-html = "djlint ./app/templates"
 format = ["format-py", "format-html"]
 format-py = "pysen run format"
-format-py-one = "pysen run_files format"
 format-html = "poe lint-html --reformat"
 test = "pytest"
 

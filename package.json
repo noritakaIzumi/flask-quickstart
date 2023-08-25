@@ -96,9 +96,9 @@
       "eslint --fix"
     ],
     "**/*.py": [
-      "poe format-py-one",
-      "poe lint-py-one",
-      "poe lint-py-bandit-one"
+      "pysen run_files format",
+      "pysen run_files lint",
+      "bandit -c pyproject.toml"
     ]
   }
 }
