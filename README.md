@@ -79,7 +79,8 @@ npm run test
 - [ ] Accessing Request Data
   - [x] Context Locals
   - [x] The Request Object
-  - [ ] File Uploads
+  - [x] File Uploads
+    - [ ] add tests
   - [ ] Cookies
 - [ ] Redirects and Errors
 - [ ] About Responses
