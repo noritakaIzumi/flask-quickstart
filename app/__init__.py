@@ -2,12 +2,14 @@ import os.path
 from os.path import abspath, dirname
 from typing import Any, Mapping, Optional
 
-from blueprints import hello, html_escaping, login, rendering_templates, search
+from blueprints import file_upload, hello, html_escaping, login, rendering_templates, search
 from blueprints.routing import unique_urls_redirection_behavior, variable_rules
 from flask import Flask
 
 AppConfig = Mapping[str, Any]
 repo_root = dirname(abspath(__file__))
+
+UPLOAD_FOLDER = f"{repo_root}/uploads"
 
 
 def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] = None) -> Flask:
@@ -20,6 +22,9 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
         instance_path=f"{repo_root}/instance",
         instance_relative_config=True,
     )
+
+    # config file uploads
+    app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
     app.config.from_mapping(
         SECRET_KEY=os.environ.get("_SECRET_KEY"), DATABASE=os.path.join(app.instance_path, "app.sqlite")
@@ -40,5 +45,6 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     app.register_blueprint(login.bp)
     app.register_blueprint(rendering_templates.bp)
     app.register_blueprint(search.bp)
+    app.register_blueprint(file_upload.bp)
 
     return app

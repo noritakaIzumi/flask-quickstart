@@ -4,6 +4,9 @@
 # flask instance folder
 /app/instance
 
+# file upload folder
+/app/uploads
+
 # mypy
 /.mypy_cache
 
