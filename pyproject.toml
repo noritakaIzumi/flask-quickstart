@@ -42,11 +42,11 @@ debug = "poe start --debug"
 lint = ["lint-py", "lint-html"]
 lint-py = ["lint-py-style", "lint-py-bandit"]
 lint-py-style = "pysen run lint"
-lint-py-bandit = "bandit -c pyproject.toml -r ."
+lint-py-bandit = "bandit -c pyproject.toml -r app"
 lint-html = "djlint ./app/templates"
 format = ["format-py", "format-html"]
 format-py = "pysen run format"
-format-html = "poe lint-html --reformat"
+format-html = "poe lint-html --reformat --warn"
 test = "pytest"
 
 # pysen
@@ -60,11 +60,11 @@ enable_isort = true
 enable_mypy = true
 mypy_preset = "strict"
 line_length = 119
-py_version = "py38"
+py_version = "py311"
 [[tool.pysen.lint.mypy_targets]]
-paths = ["."]
+paths = ["./app", "./tests"]
 [tool.pysen.lint.source]
-includes = ["."]
+includes = ["./app", "./tests"]
 
 [tool.djlint]
 profile = "jinja"
@@ -78,4 +78,9 @@ indent_size = 4
 indent_size = 4
 
 [tool.bandit]
-exclude_dirs = [".mypy_cache", ".venv", "tests"]
+
+# pytest
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
