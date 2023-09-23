@@ -76,12 +76,11 @@ npm run test
   - [x] HTTP Methods
 - [x] Static Files
 - [x] Rendering Templates
-- [ ] Accessing Request Data
+- [x] Accessing Request Data
   - [x] Context Locals
   - [x] The Request Object
   - [x] File Uploads
-    - [x] add tests
-  - [ ] Cookies
+  - [x] Cookies
 - [ ] Redirects and Errors
 - [ ] About Responses
   - [ ] APIs with JSON
