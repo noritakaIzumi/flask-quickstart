@@ -1,6 +1,8 @@
+import os
 from html import unescape
 from io import BytesIO
 
+from app import UPLOAD_FOLDER
 from bs4 import BeautifulSoup
 from flask.testing import FlaskClient
 from werkzeug.datastructures import FileStorage
@@ -33,6 +35,11 @@ class TestFileUpload:
         assert '"sample.md" is not allowed to upload' in unescape(response.text)
 
     def test_upload_file__post__succeed_to_upload_file(self, client: FlaskClient) -> None:
-        data = {"file": FileStorage(filename="sample.txt", stream=BytesIO(b"hello world"))}
+        filename = "sample.txt"
+        data = {"file": FileStorage(filename=filename, stream=BytesIO(b"hello world"))}
         response: TestResponse = client.post("/upload", data=data, follow_redirects=True)
         assert "Upload completed" in response.text
+        upload_filepath = f"{UPLOAD_FOLDER}/{filename}"
+        with open(upload_filepath, "r") as f:
+            assert f.read() == "hello world"
+        os.remove(upload_filepath)
