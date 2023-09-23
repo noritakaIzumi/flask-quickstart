@@ -4,6 +4,7 @@ from logging.config import dictConfig
 from os.path import abspath, dirname
 from typing import Any, Mapping, Optional
 
+import schema
 from flask import Flask
 
 from .blueprints import file_upload, hello, html_escaping, login, rendering_templates, search
@@ -36,7 +37,22 @@ def configure_logging() -> None:
     )
 
 
+def get_app_env_from_toml(file: str) -> dict:
+    app_env: dict
+    with open(file, "rb") as f:
+        app_env = tomllib.load(f)
+
+    try:
+        app_env = schema.Schema({"SECRET_KEY": str, "FORM_PASSWORD": str}).validate(app_env)
+    except schema.SchemaError as e:
+        raise Exception(f"app env schema error occurred\n{e}")
+
+    return app_env
+
+
 def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] = None) -> Flask:
+    app_env = get_app_env_from_toml(f"{repo_root}/app_env.toml")
+
     configure_logging()
 
     if app_name is None:
@@ -52,8 +68,8 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     # config file uploads
     app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-    app.config.from_file(f"{repo_root}/app_env.toml", tomllib.load, text=False)
     app.config.from_mapping(
+        **app_env,
         DATABASE=os.path.join(app.instance_path, "app.sqlite"),
     )
     if test_config is None:

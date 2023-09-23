@@ -14,6 +14,7 @@ poethepoet = "^0.21.1"
 flask = "^2.3.2"
 python-dotenv = "^1.0.0"
 gevent = "^23.7.0"
+schema = "^0.7.5"
 
 [tool.poetry.group.dev.dependencies]
 pip-autoremove = "^0.10.0"
