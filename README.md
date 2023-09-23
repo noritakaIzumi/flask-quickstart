@@ -80,7 +80,7 @@ npm run test
   - [x] Context Locals
   - [x] The Request Object
   - [x] File Uploads
-    - [ ] add tests
+    - [x] add tests
   - [ ] Cookies
 - [ ] Redirects and Errors
 - [ ] About Responses
