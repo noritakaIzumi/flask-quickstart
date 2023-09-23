@@ -26,6 +26,7 @@ mypy = "^1.4.1"
 pytest = "^7.4.0"
 djlint = "^1.32.1"
 bandit = "^1.7.5"
+beautifulsoup4 = "^4.12.2"
 
 [build-system]
 requires = ["poetry-core"]
