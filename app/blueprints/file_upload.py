@@ -25,6 +25,9 @@ def upload_file() -> Response | str:
             return redirect(request.url)
 
         filename = secure_filename(file.filename)
+        if filename != file.filename:
+            current_app.logger.warning('filename is sanitized to: "%s"', filename)
+
         file.save(os.path.join(current_app.config["UPLOAD_FOLDER"], filename))
         return redirect(url_for("file_upload.upload_completed"))
 

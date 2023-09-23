@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 from flask.testing import FlaskClient
 from werkzeug.datastructures import FileStorage
 from werkzeug.test import TestResponse
+from werkzeug.utils import secure_filename
 
 
 class TestFileUpload:
@@ -39,7 +40,17 @@ class TestFileUpload:
         data = {"file": FileStorage(filename=filename, stream=BytesIO(b"hello world"))}
         response: TestResponse = client.post("/upload", data=data, follow_redirects=True)
         assert "Upload completed" in response.text
-        upload_filepath = f"{UPLOAD_FOLDER}/{filename}"
+        upload_filepath = f"{UPLOAD_FOLDER}/{secure_filename(filename)}"
+        with open(upload_filepath, "r") as f:
+            assert f.read() == "hello world"
+        os.remove(upload_filepath)
+
+    def test_upload_file__post__filename_is_sanitized(self, client: FlaskClient) -> None:
+        filename = "新規 テキスト ドキュメント.txt"
+        data = {"file": FileStorage(filename=filename, stream=BytesIO(b"hello world"))}
+        response: TestResponse = client.post("/upload", data=data, follow_redirects=True)
+        assert "Upload completed" in response.text
+        upload_filepath = f"{UPLOAD_FOLDER}/{secure_filename(filename)}"
         with open(upload_filepath, "r") as f:
             assert f.read() == "hello world"
         os.remove(upload_filepath)
