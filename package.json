@@ -100,10 +100,14 @@
       "prettier --write",
       "eslint --fix"
     ],
-    "**/*.py": [
+    "app/**/*.py": [
       "pysen run_files format",
       "pysen run_files lint",
       "bandit -c pyproject.toml"
+    ],
+    "tests/**/*.py": [
+      "pysen run_files format",
+      "pysen run_files lint"
     ],
     "**/*.md": [
       "markdownlint --fix",
