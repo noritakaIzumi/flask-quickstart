@@ -1,5 +1,6 @@
 import os.path
 import tomllib
+from logging.config import dictConfig
 from os.path import abspath, dirname
 from typing import Any, Mapping, Optional
 
@@ -14,7 +15,30 @@ repo_root = dirname(app_path)
 UPLOAD_FOLDER = f"{app_path}/uploads"
 
 
+def configure_logging() -> None:
+    dictConfig(
+        {
+            "version": 1,
+            "formatters": {
+                "default": {
+                    "format": "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+                }
+            },
+            "handlers": {
+                "wsgi": {
+                    "class": "logging.StreamHandler",
+                    "stream": "ext://flask.logging.wsgi_errors_stream",
+                    "formatter": "default",
+                }
+            },
+            "root": {"level": "INFO", "handlers": ["wsgi"]},
+        }
+    )
+
+
 def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] = None) -> Flask:
+    configure_logging()
+
     if app_name is None:
         app_name = __name__
     app = Flask(
