@@ -1,0 +1,2 @@
+SECRET_KEY = "dev" # サンプルプログラムで使用
+FORM_PASSWORD = "password" # サンプルプログラムで使用

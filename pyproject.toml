@@ -33,10 +33,6 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 # scripts
-[tool.poe.env]
-PYTHONPATH = "app"
-_FORM_PASSWORD = "password" # サンプルプログラムで使用
-_SECRET_KEY = "dev" # サンプルプログラムで使用
 [tool.poe.tasks]
 start = "flask run"
 debug = "poe start --debug"
