@@ -65,11 +65,9 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
         instance_relative_config=True,
     )
 
-    # config file uploads
-    app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
-
     app.config.from_mapping(
         **app_env,
+        UPLOAD_FOLDER=UPLOAD_FOLDER,
         DATABASE=os.path.join(app.instance_path, "app.sqlite"),
     )
     if test_config is None:
