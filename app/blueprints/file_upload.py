@@ -1,7 +1,7 @@
 import os.path
 
+from app.services.file_upload import file_is_allowed_to_upload
 from flask import Blueprint, current_app, flash, redirect, render_template, request, url_for
-from services.file_upload import file_is_allowed_to_upload
 from werkzeug import Response
 from werkzeug.utils import secure_filename
 

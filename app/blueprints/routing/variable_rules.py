@@ -14,6 +14,7 @@ def show_post(post_id: int) -> str:
     return f"Post {post_id}"
 
 
+# noinspection SpellCheckingInspection
 @bp.route("/path/<path:subpath>")
 def show_subpath(subpath: str) -> str:
     return f"Subpath {escape(subpath)}"

@@ -3,9 +3,9 @@ from typing import Callable
 
 import pytest
 from app import create_app
-from blueprints import hello
-from blueprints.routing import variable_rules
-from blueprints.routing.unique_urls_redirection_behavior import about
+from app.blueprints import hello
+from app.blueprints.routing import variable_rules
+from app.blueprints.routing.unique_urls_redirection_behavior import about
 from flask import request, url_for
 from flask.testing import FlaskClient
 from markupsafe import escape, soft_str
@@ -25,6 +25,7 @@ class TestApp:
         assert response.status_code == 200
         assert response.text == f'Hello, {escape("<<<<<<")}'
 
+    # noinspection SpellCheckingInspection
     @pytest.mark.parametrize(
         "path, response_text",
         (

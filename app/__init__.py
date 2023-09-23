@@ -2,9 +2,10 @@ import os.path
 from os.path import abspath, dirname
 from typing import Any, Mapping, Optional
 
-from blueprints import file_upload, hello, html_escaping, login, rendering_templates, search
-from blueprints.routing import unique_urls_redirection_behavior, variable_rules
 from flask import Flask
+
+from .blueprints import file_upload, hello, html_escaping, login, rendering_templates, search
+from .blueprints.routing import unique_urls_redirection_behavior, variable_rules
 
 AppConfig = Mapping[str, Any]
 repo_root = dirname(abspath(__file__))
