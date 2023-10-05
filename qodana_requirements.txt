@@ -12,7 +12,7 @@ click==8.1.6
 colorama==0.4.6
 colorlog==4.8.0
 crashtest==0.4.1
-cryptography==41.0.2
+cryptography==41.0.4
 cssbeautifier==1.14.9
 dacite==1.8.1
 distlib==0.3.7
@@ -24,7 +24,7 @@ flake8==6.0.0
 Flask==2.3.2
 gevent==23.7.0
 gitdb==4.0.10
-GitPython==3.1.32
+GitPython==3.1.35
 greenlet==3.0.0a1
 html-tag-names==0.1.2
 html-void-elements==0.1.0
@@ -93,7 +93,7 @@ tqdm==4.66.1
 trove-classifiers==2023.7.6
 typing_extensions==4.7.1
 unidiff==0.7.5
-urllib3==1.26.16
+urllib3==1.26.17
 virtualenv==20.24.2
 watchdog==3.0.0
 webencodings==0.5.1
@@ -101,3 +101,4 @@ Werkzeug==2.3.6
 zipp==3.16.2
 zope.event==5.0
 zope.interface==6.0
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
