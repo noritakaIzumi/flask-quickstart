@@ -11,7 +11,7 @@ packages = [{ include = "flask_quickstart" }]
 python = "^3.8.1"  # for flake8 6.0.0
 poetry = "^1.5.1"
 poethepoet = "^0.21.1"
-flask = "^2.3.2"
+flask = "^3.0.0"
 python-dotenv = "^1.0.0"
 gevent = "^23.7.0"
 schema = "^0.7.5"
