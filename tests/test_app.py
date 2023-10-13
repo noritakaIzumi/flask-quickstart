@@ -1,11 +1,11 @@
 from html import unescape
-from typing import Callable
 
 import pytest
 from app import create_app
 from app.blueprints import hello
 from app.blueprints.routing import variable_rules
 from app.blueprints.routing.unique_urls_redirection_behavior import about
+from app.helpers.url import get_endpoint_name
 from flask import request, url_for
 from flask.testing import FlaskClient
 from markupsafe import escape, soft_str
@@ -60,10 +60,6 @@ class TestApp:
         assert response.status_code == status_code
 
     def test_app__url_building(self, client: FlaskClient) -> None:
-        def get_endpoint_name(function: Callable) -> str:
-            # noinspection PyUnresolvedReferences
-            return str(function.__module__).split(".")[-1] + "." + function.__name__
-
         with _app.test_request_context():
             assert url_for(get_endpoint_name(hello.hello_world)) == "/"
             assert url_for(get_endpoint_name(about)) == "/about"
@@ -94,3 +90,14 @@ class TestApp:
         with _app.test_request_context("/hello", method="POST"):
             assert request.path == "/hello"
             assert request.method == "POST"
+
+    def test_app__redirects_and_errors(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/redirect_1", follow_redirects=True)
+        assert response.status_code == 401
+        assert response.request.path == "/redirect_2"
+        assert len(response.history) == 1
+
+    def test_app__redirects_and_errors__handing_404_errors(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/blahblah")
+        assert response.status_code == 404
+        assert "Page Not Found" in response.text

@@ -7,7 +7,17 @@ from typing import Any, Mapping, Optional
 import schema
 from flask import Flask
 
-from .blueprints import cookies, file_upload, hello, html_escaping, login, rendering_templates, search, sitemap
+from .blueprints import (
+    cookies,
+    file_upload,
+    hello,
+    html_escaping,
+    login,
+    redirects_and_errors,
+    rendering_templates,
+    search,
+    sitemap,
+)
 from .blueprints.routing import unique_urls_redirection_behavior, variable_rules
 
 AppConfig = Mapping[str, Any]
@@ -89,5 +99,6 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     app.register_blueprint(file_upload.bp)
     app.register_blueprint(cookies.bp)
     app.register_blueprint(sitemap.bp)
+    app.register_blueprint(redirects_and_errors.bp)
 
     return app

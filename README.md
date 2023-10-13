@@ -81,7 +81,7 @@ npm run test
   - [x] The Request Object
   - [x] File Uploads
   - [x] Cookies
-- [ ] Redirects and Errors
+- [x] Redirects and Errors
 - [ ] About Responses
   - [ ] APIs with JSON
 - [ ] Sessions
@@ -109,5 +109,5 @@ npm run test
 - [x] pytest
 - [x] e2e test via Playwright
 - [x] pre-commit
-- [x] linter/fomatter
+- [x] linter/formatter
 - [x] security check: *.py
