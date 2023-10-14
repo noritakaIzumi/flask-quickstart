@@ -101,3 +101,4 @@ class TestApp:
         response: TestResponse = client.get("/blahblah")
         assert response.status_code == 404
         assert "Page Not Found" in response.text
+        assert response.headers.get("X-Something") == "A value"
