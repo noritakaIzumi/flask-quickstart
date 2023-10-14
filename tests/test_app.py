@@ -1,7 +1,7 @@
 from html import unescape
 
 import pytest
-from app import create_app
+from app import create_app, repo_root
 from app.blueprints import hello
 from app.blueprints.routing import variable_rules
 from app.blueprints.routing.unique_urls_redirection_behavior import about
@@ -9,6 +9,7 @@ from app.helpers.url import get_endpoint_name
 from flask import request, url_for
 from flask.testing import FlaskClient
 from markupsafe import escape, soft_str
+from tests.support.json_helper import json_is_valid
 from werkzeug.test import TestResponse
 
 _app = create_app()
@@ -102,3 +103,15 @@ class TestApp:
         assert response.status_code == 404
         assert "Page Not Found" in response.text
         assert response.headers.get("X-Something") == "A value"
+
+    def test_app__api_with_json__case1(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/me")
+        assert response.status_code == 200
+        assert response.is_json
+        assert json_is_valid(instance=response.json, schema_filepath=f"{repo_root}/tests/json/user.schema.json")
+
+    def test_app__api_with_json__case2(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/users")
+        assert response.status_code == 200
+        assert response.is_json
+        assert json_is_valid(instance=response.json, schema_filepath=f"{repo_root}/tests/json/users.schema.json")

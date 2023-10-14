@@ -8,6 +8,7 @@ import schema
 from flask import Flask
 
 from .blueprints import (
+    api_with_json,
     cookies,
     file_upload,
     hello,
@@ -100,5 +101,6 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     app.register_blueprint(cookies.bp)
     app.register_blueprint(sitemap.bp)
     app.register_blueprint(redirects_and_errors.bp)
+    app.register_blueprint(api_with_json.bp)
 
     return app

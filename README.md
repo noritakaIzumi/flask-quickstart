@@ -82,8 +82,8 @@ npm run test
   - [x] File Uploads
   - [x] Cookies
 - [x] Redirects and Errors
-- [ ] About Responses
-  - [ ] APIs with JSON
+- [x] About Responses
+  - [x] APIs with JSON
 - [ ] Sessions
 - [ ] Message Flashing
 - [ ] Logging
