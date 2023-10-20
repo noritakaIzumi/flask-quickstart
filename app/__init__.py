@@ -54,7 +54,7 @@ def get_app_env_from_toml(file: str) -> dict:
         app_env = tomllib.load(f)
 
     try:
-        app_env = schema.Schema({"SECRET_KEY": str, "FORM_PASSWORD": str}).validate(app_env)
+        app_env = schema.Schema({"SECRET_KEY": str, "FORM_PASSWORD": str, "IS_HTTPS": bool}).validate(app_env)
     except schema.SchemaError as e:
         raise Exception(f"app env schema error occurred\n{e}")
 
