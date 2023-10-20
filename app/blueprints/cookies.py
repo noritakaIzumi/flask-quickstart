@@ -1,5 +1,3 @@
-import json
-
 from flask import Blueprint, Response, make_response, render_template, request
 
 bp = Blueprint(__name__.replace(f"{__package__}.", ""), __name__)
@@ -8,7 +6,7 @@ bp = Blueprint(__name__.replace(f"{__package__}.", ""), __name__)
 @bp.get("/get_cookie")
 def get_cookie() -> str:
     username = request.cookies.get("username")
-    return f"username: {json.dumps(username)}"
+    return render_template("get_cookie.html", username=username)
 
 
 @bp.get("/set_cookie")
