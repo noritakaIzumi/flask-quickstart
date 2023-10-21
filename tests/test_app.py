@@ -2,7 +2,7 @@ from html import unescape
 
 import pytest
 from app import create_app, repo_root
-from app.blueprints import hello
+from app.blueprints import index
 from app.blueprints.routing import variable_rules
 from app.blueprints.routing.unique_urls_redirection_behavior import about
 from app.helpers.url import get_endpoint_name
@@ -62,7 +62,7 @@ class TestApp:
 
     def test_app__url_building(self, client: FlaskClient) -> None:
         with _app.test_request_context():
-            assert url_for(get_endpoint_name(hello.hello_world)) == "/"
+            assert url_for(get_endpoint_name(index.hello_world)) == "/"
             assert url_for(get_endpoint_name(about)) == "/about"
             assert url_for(get_endpoint_name(about), next="/") == "/about?next=/"
             assert (

@@ -11,8 +11,8 @@ from .blueprints import (
     api_with_json,
     cookies,
     file_upload,
-    hello,
     html_escaping,
+    index,
     login,
     redirects_and_errors,
     rendering_templates,
@@ -90,7 +90,7 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     os.makedirs(app.instance_path, exist_ok=True)
 
     # register blueprints
-    app.register_blueprint(hello.bp)
+    app.register_blueprint(index.bp)
     app.register_blueprint(html_escaping.bp)
     app.register_blueprint(variable_rules.bp)
     app.register_blueprint(unique_urls_redirection_behavior.bp)
