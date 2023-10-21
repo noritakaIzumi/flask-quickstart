@@ -1,3 +1,4 @@
+import json
 from html import unescape
 
 import pytest
@@ -115,3 +116,27 @@ class TestApp:
         assert response.status_code == 200
         assert response.is_json
         assert json_is_valid(instance=response.json, schema_filepath=f"{repo_root}/tests/json/users.schema.json")
+
+    def test_app__sessions__not_logged_in(self, client: FlaskClient) -> None:
+        response: TestResponse = client.get("/")
+        assert response.status_code == 200
+        assert "You are not logged in" in response.text
+
+    def test_app__sessions__logged_in(self, client: FlaskClient) -> None:
+        client.post(
+            "/login",
+            data=json.load(open(f"{repo_root}/tests/support/test_login/valid.json")),
+        )
+        response: TestResponse = client.get("/")
+        assert response.status_code == 200
+        assert "Logged in as nori" in response.text
+
+    def test_app__sessions__logged_out(self, client: FlaskClient) -> None:
+        client.post(
+            "/login",
+            data=json.load(open(f"{repo_root}/tests/support/test_login/valid.json")),
+        )
+        client.get("/")
+        with _app.test_request_context():
+            response: TestResponse = client.get("/logout", follow_redirects=True)
+            assert response.request.path == url_for(get_endpoint_name(index.hello_world))

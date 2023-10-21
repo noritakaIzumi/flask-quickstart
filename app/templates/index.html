@@ -1,1 +1,6 @@
 <p>Hello World!</p>
+{% if username is not none %}
+  <p>Logged in as {{ username }}</p>
+{% else %}
+  <p>You are not logged in</p>
+{% endif %}

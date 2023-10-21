@@ -84,7 +84,7 @@ npm run test
 - [x] Redirects and Errors
 - [x] About Responses
   - [x] APIs with JSON
-- [ ] Sessions
+- [x] Sessions
 - [ ] Message Flashing
 - [ ] Logging
 - [ ] Hooking in WSGI Middleware
