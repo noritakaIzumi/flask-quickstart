@@ -8,9 +8,7 @@ bp = Blueprint(__name__.replace(f"{__package__}.", ""), __name__)
 @bp.route("/login", methods=["GET", "POST"])
 def login() -> str:
     class Form:
-        def __init__(self, request_form: Optional[Dict[str, str]] = None) -> None:
-            if request_form is None:
-                request_form = {}
+        def __init__(self, request_form: Dict[str, str]) -> None:
             self.username = request_form.get("username")
             self.password = request_form.get("password")
 
