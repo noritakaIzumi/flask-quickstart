@@ -14,7 +14,7 @@ colorama==0.4.6
 colorlog==4.8.0
 contextlib2==21.6.0
 crashtest==0.4.1
-cryptography==41.0.4
+cryptography==41.0.5
 cssbeautifier==1.14.9
 dacite==1.8.1
 distlib==0.3.7
