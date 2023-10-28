@@ -19,7 +19,7 @@ include:
 #      - <path/where/not/run/inspection>
 
 #Execute shell command before Qodana execution (Applied in CI/CD pipeline)
-bootstrap: pip install -r qodana_requirements.txt
+bootstrap: pip install -r requirements.txt
 
 #Install IDE plugins before Qodana execution (Applied in CI/CD pipeline)
 #plugins:
