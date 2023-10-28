@@ -87,7 +87,7 @@ npm run test
 - [x] Sessions
 - [x] Message Flashing
 - [x] Logging
-- [ ] Hooking in WSGI Middleware
+- [x] Hooking in WSGI Middleware
 - [ ] Using Flask Extensions
 - [ ] Deploying to a Web Server
 

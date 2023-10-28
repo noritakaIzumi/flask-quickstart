@@ -6,6 +6,7 @@ from typing import Any, Mapping, Optional
 
 import schema
 from flask import Flask
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 from .blueprints import (
     api_with_json,
@@ -89,6 +90,9 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
 
     # ensure the instance folder exists
     os.makedirs(app.instance_path, exist_ok=True)
+
+    # add WSGI middleware
+    app.wsgi_app = ProxyFix(app.wsgi_app)  # type: ignore
 
     # register blueprints
     app.register_blueprint(index.bp)
