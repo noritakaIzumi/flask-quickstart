@@ -46,6 +46,16 @@ def configure_logging() -> None:
                 }
             },
             "root": {"level": "INFO", "handlers": ["wsgi"]},
+            "loggers": {
+                "gunicorn.error": {
+                    "handlers": ["wsgi"],
+                    "propagate": False,
+                },
+                "gunicorn.access": {
+                    "handlers": ["wsgi"],
+                    "propagate": False,
+                },
+            },
         }
     )
 
