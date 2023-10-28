@@ -13,6 +13,7 @@ from .blueprints import (
     file_upload,
     html_escaping,
     index,
+    logger,
     login,
     redirects_and_errors,
     rendering_templates,
@@ -102,5 +103,6 @@ def create_app(app_name: Optional[str] = None, test_config: Optional[AppConfig] 
     app.register_blueprint(sitemap.bp)
     app.register_blueprint(redirects_and_errors.bp)
     app.register_blueprint(api_with_json.bp)
+    app.register_blueprint(logger.bp)
 
     return app
