@@ -1,0 +1,10 @@
+# ignore everything
+*
+
+# application
+!app
+!app/**/*
+!app_env.toml
+!gunicorn.conf.py
+!poetry.lock
+!pyproject.toml
