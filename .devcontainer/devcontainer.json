@@ -4,19 +4,21 @@
 	"name": "Debian",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"runArgs": ["--name", "flask-quickstart"],
 	"features": {
-		"ghcr.io/devcontainers-contrib/features/asdf-package:1": {
-			"plugin": "act",
-			"version": "latest",
-			"pluginRepo": "https://github.com/grimoh/asdf-act.git",
-			"latestVersionPattern": "[0-9]"
+		"ghcr.io/devcontainers/features/sshd:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11.6",
+			"installTools": false
 		}
 	},
 
 	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	"forwardPorts": [2222],
 
 	// Configure tool-specific properties.
 	// "customizations": {},
