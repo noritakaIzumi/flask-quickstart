@@ -2,9 +2,6 @@
 
 set -e
 
-# config
-PYTHON_VERSION="3.11.6"
-
 # update apt packages
 sudo apt update
 
