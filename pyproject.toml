@@ -9,9 +9,9 @@ packages = [{ include = "flask_quickstart" }]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"  # for flake8 6.0.0
-poetry = "^1.5.1"
+poetry = "1.8.2"
 poethepoet = "^0.21.1"
-flask = "^3.0.0"
+flask = "3.0.2"
 python-dotenv = "^1.0.0"
 gevent = "^23.7.0"
 schema = "^0.7.5"
