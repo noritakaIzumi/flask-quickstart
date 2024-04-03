@@ -6,7 +6,7 @@ test.describe('invalid login', async () => {
   });
 
   test('get title', async ({ page }) => {
-    await expect(page.getByText(/Login form/)).toBeTruthy();
+    expect(page.getByText(/Login form/)).toBeTruthy();
   });
 
   test('valid login', async ({ page }) => {
