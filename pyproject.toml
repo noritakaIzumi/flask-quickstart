@@ -17,7 +17,7 @@ gevent = "^23.7.0"
 schema = "^0.7.5"
 jsonschema = "^4.19.1"
 jsonref = "^1.1.0"
-gunicorn = "^21.2.0"
+gunicorn = "^22.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pip-autoremove = "^0.10.0"
