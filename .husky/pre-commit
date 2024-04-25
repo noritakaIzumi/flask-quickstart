@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
+# shellcheck source=./_/husky.sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# shellcheck source=../.venv/bin/activate
 . ./.venv/bin/activate
 npx lint-staged --verbose
