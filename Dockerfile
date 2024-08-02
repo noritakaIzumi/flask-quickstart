@@ -1,6 +1,6 @@
 FROM python:3.11.6-bookworm
 
-RUN apt update
+RUN apt update && apt upgrade -y && apt autoremove -y
 
 WORKDIR /work
 COPY . .
