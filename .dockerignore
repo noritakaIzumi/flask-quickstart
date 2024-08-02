@@ -2,8 +2,7 @@
 *
 
 # application
-!app
-!app/**/*
+!app/**
 !app_env.toml
 !gunicorn.conf.py
 !poetry.lock
