@@ -21,7 +21,7 @@ Upgrade pip and install dependencies.
 ```shell
 pip install --upgrade pip setuptools
 pip install poetry
-poetry install --sync --no-root
+poetry install --sync
 ```
 
 ## Preview server

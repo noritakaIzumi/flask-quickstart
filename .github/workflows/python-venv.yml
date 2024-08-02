@@ -51,7 +51,7 @@ jobs:
           . ./.venv/bin/activate
           pip install --upgrade pip
           pip install poetry
-          poetry install --sync --no-root
+          poetry install --sync
       - name: Save python venv
         uses: actions/cache@v3
         with:

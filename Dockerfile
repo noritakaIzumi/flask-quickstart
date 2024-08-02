@@ -15,7 +15,7 @@ ENV PATH=$PATH:$USER_HOME/.local/bin
 
 # install python packages
 RUN pip install --upgrade pip setuptools && pip install poetry
-RUN poetry install --sync --no-root
+RUN poetry install --sync --without dev
 
 # start server
 ENTRYPOINT ["poetry", "run"]
