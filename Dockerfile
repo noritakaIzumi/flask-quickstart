@@ -26,6 +26,8 @@ ENV PATH=$PATH:$USER_HOME/.local/bin
 RUN pip install --upgrade pip setuptools && pip install poetry
 RUN poetry install --sync --without dev
 
+EXPOSE 8080
+
 # start server
 ENTRYPOINT ["poetry", "run"]
 CMD ["gunicorn", "--bind", "0.0.0.0:8080"]
