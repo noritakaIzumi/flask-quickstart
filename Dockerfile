@@ -18,7 +18,8 @@ RUN adduser --system --home $USER_HOME --shell /bin/bash --disabled-password $SH
 USER $SHELL_USER
 
 WORKDIR /work
-COPY . .
+COPY /poetry.lock /work
+COPY /pyproject.toml /work
 
 ENV PATH=$PATH:$USER_HOME/.local/bin
 
@@ -27,6 +28,8 @@ RUN pip install --upgrade pip setuptools && pip install poetry
 RUN poetry install --sync --without dev
 
 EXPOSE 8080
+
+COPY . .
 
 # start server
 ENTRYPOINT ["poetry", "run"]
