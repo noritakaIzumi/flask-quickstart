@@ -20,8 +20,9 @@ from .blueprints import (
     rendering_templates,
     search,
     sitemap,
+    unique_urls_redirection_behavior,
+    variable_rules,
 )
-from .blueprints.routing import unique_urls_redirection_behavior, variable_rules
 
 AppConfig = Mapping[str, Any]
 app_path = dirname(abspath(__file__))

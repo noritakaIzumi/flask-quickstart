@@ -3,9 +3,8 @@ from html import unescape
 
 import pytest
 from app import create_app, repo_root
-from app.blueprints import index
-from app.blueprints.routing import variable_rules
-from app.blueprints.routing.unique_urls_redirection_behavior import about
+from app.blueprints import index, variable_rules
+from app.blueprints.unique_urls_redirection_behavior import about
 from app.helpers.url import get_endpoint_name
 from flask import request, url_for
 from flask.testing import FlaskClient
