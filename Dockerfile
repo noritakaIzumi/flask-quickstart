@@ -1,4 +1,4 @@
-FROM python:3.12.5-slim-bookworm
+FROM python:3.14.0a3-slim-bookworm
 
 ENV SHELL_USER=python
 ENV USER_HOME=/home/$SHELL_USER
